@@ -1,10 +1,13 @@
 package model;
 
+import java.util.List;
+
 public class Book {
     private int id;
     private String name;
     private String author;
     private String description;
+    private List<Category> categoryList;
 
     public Book() {
     }
@@ -20,6 +23,22 @@ public class Book {
         this.name = name;
         this.author = author;
         this.description = description;
+    }
+
+    public Book(int id, String name, String author, String description, List<Category> categoryList) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.description = description;
+        this.categoryList = categoryList;
+    }
+
+    public List<Category> getCategoryList() {
+        return categoryList;
+    }
+
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
     }
 
     public int getId() {

@@ -1031,7 +1031,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="300" parent="1" name="bookmanager">
-      <LastIntrospectionLocalTimestamp>2024-02-13.09:21:55</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-02-14.01:45:14</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="301" parent="1" name="mysql.infoschema">

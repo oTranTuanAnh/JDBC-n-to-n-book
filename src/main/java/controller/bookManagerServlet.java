@@ -1,8 +1,11 @@
 package controller;
 
 import model.Book;
+import model.Category;
 import services.BookService;
+import services.CategoryService;
 import services.IBookService;
+import services.ICategoryService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,10 +14,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/books")
 public class bookManagerServlet extends HttpServlet {
     IBookService bookService = new BookService();
+    ICategoryService categoryService = new CategoryService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String act = req.getParameter("action");
@@ -35,6 +40,7 @@ public class bookManagerServlet extends HttpServlet {
 
     private void showFormCreate(HttpServletRequest req, HttpServletResponse resp) {
         RequestDispatcher dispatcher = req.getRequestDispatcher("create.jsp");
+        req.setAttribute("categories", categoryService.findAll());
         try {
             dispatcher.forward(req, resp);
         } catch (ServletException e) {
@@ -46,6 +52,9 @@ public class bookManagerServlet extends HttpServlet {
 
     private void showListBook(HttpServletRequest req, HttpServletResponse resp) {
         RequestDispatcher dispatcher = req.getRequestDispatcher("list.jsp");
+        List<Book> bookList = bookService.findAll();
+        req.setAttribute("books", bookList);
+
         try {
             dispatcher.forward(req, resp);
         } catch (ServletException e) {

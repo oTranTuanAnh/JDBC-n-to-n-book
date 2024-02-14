@@ -21,14 +21,14 @@
         <th>TAC GIA</th>
         <th>DANH MUC</th>
     </tr>
-    <c:forEach items="${books}" var="b">
+    <c:forEach items="${books}" var="books">
         <tr>
-            <td>${b.id}</td>
-            <td>${b.name}</td>
-            <td>${b.author}</td>
+            <td>${books.id}</td>
+            <td>${books.name}</td>
+            <td>${books.author}</td>
             <td>
-                <c:forEach items="${b.categories}" var="c">
-                    <span>${c.name}</span> &nbsp;
+                <c:forEach items="${books.categoryList}" var="categories">
+                    <span>${categories.name}</span> &nbsp;
                 </c:forEach>
             </td>
         </tr>

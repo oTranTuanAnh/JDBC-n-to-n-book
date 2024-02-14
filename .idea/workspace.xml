@@ -4,31 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3ed736b-cfc5-4587-abf1-a8eee9c06428" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ConnectionJDBC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/bookManagerServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/BookService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/IBookService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/IService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/create.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/list.jsp" afterDir="false" />
+    <list default="true" id="b3ed736b-cfc5-4587-abf1-a8eee9c06428" name="Changes" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/ICategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0a249f35-dcd2-473b-a5c1-1ca10501c338.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0a249f35-dcd2-473b-a5c1-1ca10501c338.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConnectionJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConnectionJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/bookManagerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/bookManagerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +202,17 @@
       <updated>1707620847265</updated>
       <workItem from="1707620848321" duration="1497000" />
       <workItem from="1707812533747" duration="4209000" />
+      <workItem from="1707874525606" duration="8180000" />
     </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1707874569426</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707874569426</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,5 +220,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
 </project>
