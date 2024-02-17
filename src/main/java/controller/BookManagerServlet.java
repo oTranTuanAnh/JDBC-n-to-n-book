@@ -32,12 +32,30 @@ public class BookManagerServlet extends HttpServlet {
             case "delete":
                 showFormDelete(req, resp);
                 break;
+            case "edit":
+                showFormEdit(req, resp);
+                break;
             default:
                 showListBook(req, resp);
                 break;
 
         }
 
+    }
+
+    private void showFormEdit(HttpServletRequest req, HttpServletResponse resp) {
+        int id = Integer.parseInt(req.getParameter("id"));
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("edit.jsp");
+        req.setAttribute("books", bookService.findById(id));
+        req.setAttribute("categories", categoryService.findAll());
+
+        try {
+            requestDispatcher.forward(req,resp);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void showFormDelete(HttpServletRequest req, HttpServletResponse resp) {
@@ -90,15 +108,35 @@ public class BookManagerServlet extends HttpServlet {
         switch (act){
             case "create":
                 createNewBook(req, resp);
+                showListBook(req, resp);
                 break;
             case "delete":
                 deleteBook(req, resp);
+                showListBook(req, resp);
+                break;
+            case "edit":
+                editBook(req, resp);
+                showListBook(req, resp);
                 break;
             default:
                 break;
 
         }
 
+    }
+
+    private void editBook(HttpServletRequest req, HttpServletResponse resp) {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String name = req.getParameter("name");
+        String author = req.getParameter("author");
+        String description = req.getParameter("description");
+        String[] categoriesStr = req.getParameterValues("categories");
+        int[] categories = new int[categoriesStr.length];
+        for (int i = 0; i < categoriesStr.length; i++) {
+            categories[i] = Integer.parseInt(categoriesStr[i]);
+        }
+        Book book = new Book(name, author, description);
+        bookService.edit(id, book, categories);
     }
 
     private void deleteBook(HttpServletRequest req, HttpServletResponse resp) {

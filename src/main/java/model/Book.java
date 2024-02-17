@@ -25,6 +25,13 @@ public class Book {
         this.description = description;
     }
 
+    public Book(String name, String author, String description, List<Category> categoryList) {
+        this.name = name;
+        this.author = author;
+        this.description = description;
+        this.categoryList = categoryList;
+    }
+
     public Book(int id, String name, String author, String description, List<Category> categoryList) {
         this.id = id;
         this.name = name;
