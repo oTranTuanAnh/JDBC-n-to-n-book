@@ -1,7 +1,6 @@
 package controller;
 
 import model.Book;
-import model.Category;
 import services.BookService;
 import services.CategoryService;
 import services.IBookService;
@@ -17,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/books")
-public class bookManagerServlet extends HttpServlet {
+public class BookManagerServlet extends HttpServlet {
     IBookService bookService = new BookService();
     ICategoryService categoryService = new CategoryService();
     @Override
@@ -30,12 +29,30 @@ public class bookManagerServlet extends HttpServlet {
             case "create":
                 showFormCreate(req, resp);
                 break;
+            case "delete":
+                showFormDelete(req, resp);
+                break;
             default:
                 showListBook(req, resp);
                 break;
 
         }
 
+    }
+
+    private void showFormDelete(HttpServletRequest req, HttpServletResponse resp) {
+        int id = Integer.parseInt(req.getParameter("id"));
+        Book book = bookService.findById(id);
+        req.setAttribute("books", book);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("delete.jsp");
+        try {
+            dispatcher.forward(req, resp);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void showFormCreate(HttpServletRequest req, HttpServletResponse resp) {
@@ -74,11 +91,19 @@ public class bookManagerServlet extends HttpServlet {
             case "create":
                 createNewBook(req, resp);
                 break;
+            case "delete":
+                deleteBook(req, resp);
+                break;
             default:
                 break;
 
         }
 
+    }
+
+    private void deleteBook(HttpServletRequest req, HttpServletResponse resp) {
+        int id = Integer.parseInt(req.getParameter("id"));
+        bookService.delete(id);
     }
 
     private void createNewBook(HttpServletRequest req, HttpServletResponse resp) {

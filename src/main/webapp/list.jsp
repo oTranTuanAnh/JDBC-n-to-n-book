@@ -20,6 +20,8 @@
         <th>TEN</th>
         <th>TAC GIA</th>
         <th>DANH MUC</th>
+        <th>LUA CHON</th>
+
     </tr>
     <c:forEach items="${books}" var="books">
         <tr>
@@ -30,6 +32,10 @@
                 <c:forEach items="${books.categoryList}" var="categories">
                     <span>${categories.name}</span> &nbsp;
                 </c:forEach>
+            </td>
+            <td>
+                <a href="/books?action=edit&id=${books.getId()}">Edit</a>
+                <a href="/books?action=delete&id=${books.getId()}">Delete</a>
             </td>
         </tr>
     </c:forEach>

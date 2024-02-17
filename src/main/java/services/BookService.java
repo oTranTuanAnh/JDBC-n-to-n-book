@@ -12,6 +12,9 @@ public class BookService implements IBookService{
     public static final String INSERT_NEW_BOOK = "insert into book(name, author, description) values (?,?,?);";
     public static final String INSERT_INTO_BOOK_CATEGORY_VALUES = "insert into book_category values (?,?);";
     public static final String SELECT_ALL_BOOK = "select * from book;";
+    public static final String SELECT_FROM_BOOK_WHERE_ID = "select * from book where id = ?;";
+    public static final String DELETE_FROM_BOOK_CATEGORY_WHERE_BOOK_ID = "delete from book_category where book_id =?;";
+    public static final String DELETE_FROM_BOOK_WHERE_BOOK_ID = "delete from book where id =?;";
     Connection connectionJDBC = ConnectionJDBC.getConnection();
     ICategoryService categoryService = new CategoryService();
     @Override
@@ -24,7 +27,7 @@ public class BookService implements IBookService{
             statement.setString(2, p.getAuthor());
             statement.setString(3, p.getDescription());
 
-            int num = statement.executeUpdate();
+            statement.executeUpdate();
             //lay id cua book
             ResultSet resultSet = statement.getGeneratedKeys();
             while (resultSet.next()){
@@ -78,7 +81,24 @@ public class BookService implements IBookService{
 
     @Override
     public Book findById(int id) {
-        return null;
+        Book book = null;
+        try {
+            PreparedStatement statement = connectionJDBC.prepareStatement(SELECT_FROM_BOOK_WHERE_ID);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                int b_id = resultSet.getInt("id");
+                String b_name = resultSet.getString("name");
+                String b_author = resultSet.getString("author");
+                String b_description = resultSet.getString("description");
+                book = new Book(b_id, b_name, b_author, b_description);
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return book;
+
     }
 
     @Override
@@ -88,7 +108,20 @@ public class BookService implements IBookService{
 
     @Override
     public void delete(int id) {
+        try {
+            //xoa tai bang book_category
+            PreparedStatement statement = connectionJDBC.prepareStatement(DELETE_FROM_BOOK_CATEGORY_WHERE_BOOK_ID);
+            statement.setInt(1, id);
+            statement.executeUpdate();
 
+            //xoa tai bang book
+            PreparedStatement statement1 = connectionJDBC.prepareStatement(DELETE_FROM_BOOK_WHERE_BOOK_ID);
+            statement1.setInt(1, id);
+            statement1.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
